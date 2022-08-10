@@ -18,7 +18,7 @@ def yourFun():
 	return render(request,'template.html')
 
 
->>>WITHOUT HTML TEMPLATES 
+>>>WITH HTML TEMPLATES 
 
 >>views.py
 from django.template.loader import render_to_string
@@ -27,11 +27,11 @@ from django.conf import settings
 def yourFun():
 	emailSubject, emailOfSender, to_email = 'testing', settings.EMAIL_HOST_USER, [reqemailId,]
     c = {}
-    c["username"] = createuser_api_res['username']
-    c["password"] = createuser_api_res['password']
+    c["username"] = "username"
+    c["password"] = "userpass"
     text_content = 'this is testing msg'
     html_content = render_to_string('receipt_email.html', c, request=request)
-    msg = EmailMultiAlternatives(subject=emailSubject, body=text_content, from_email=emailOfSender, to=to_email)#, reply_to=[emailOfSender,]
+    msg = EmailMultiAlternatives(subject=emailSubject, body=text_content, from_email=emailOfSender, to=to_email,)#reply_to=emailOfSender,
     msg.attach_alternative(html_content, "text/html")
     msg.send(fail_silently=False)
 	return render(request,'template.html')
@@ -205,7 +205,7 @@ def yourFun():
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Team,<br>DigiNxtHlt</p>
+                            <p style="margin: 0;">Team,<br>ajaysh6rm6</p>
                         </td>
                     </tr>
                 </table>
